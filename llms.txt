@@ -1,0 +1,41 @@
+# Same Sky, Different Ground
+
+> A free, practical guide to reading the ecology of the Sunshine Coast, Queensland, Australia — from the reef to the range. The companion resource to the natural-history book of the same name: what lives where, why the landscape is arranged the way it is, and how to read it for yourself.
+
+The Sunshine Coast packs reef, estuary, heath, swamp, eucalypt forest and rainforest into a short, steep run from the sea to the range. This site explains why — the rock, soil, water and fire behind the pattern — and turns it into a skill anyone can use outdoors. All content is free to read and made to be useful on its own, not just as a promotion for the book.
+
+Author: Daniel Addington. Language: en-AU. Region: Sunshine Coast (Maroochy, Mooloolah, Noosa and Mary catchments; Glass House Mountains to Cooloola; Blackall Range hinterland), Queensland, Australia.
+
+## Guides
+
+- [How to read the country — field guide](https://sunshinecoastecology.com.au/field-guide.html): The five-minute method for reading any patch of the coast at a glance; how to look, the one-day gradient drive, where to go, what's safe, and how to help.
+- [The ecosystems](https://sunshinecoastecology.com.au/ecosystems.html): The six habitats from reef to range — estuaries and mangroves, dunes and wallum, paperbark swamps, eucalypt forests, rainforests, and sea country — how to recognise each, why it's there, who lives there, where to see it.
+- [The forces](https://sunshinecoastecology.com.au/forces.html): Rock, soil, water and fire — the four forces that build every kind of country on the coast. Ecosystems are the what; these are the why.
+- [Wonders](https://sunshinecoastecology.com.au/wonders.html): The set-piece natural wonders — dead volcanoes on the skyline (the Glass House Mountains), a giant podzol soil twenty metres deep at Cooloola, wallum frogs that breed in acid water, godwits that fly from the Arctic, and the humpback whales that came back from near-extinction.
+
+## Living data
+
+- [In flower now](https://sunshinecoastecology.com.au/in-flower.html): A living calendar of Sunshine Coast wildflowers by habitat and by month, from the spring wallum heath to the winter ironbarks.
+- [This month](https://sunshinecoastecology.com.au/this-month.html): What to look for right now, through the naturalist's year — spring wildflowers to winter whales.
+- [Explore the map](https://sunshinecoastecology.com.au/explore-map.html): An interactive relief map of the Sunshine Coast built from elevation data; click the landmarks to read what they are and why they are there.
+- [Read the country — a game](https://sunshinecoastecology.com.au/read-the-country.html): Guess which ecosystem you are standing in from its cues alone.
+
+## The book
+
+- [The book](https://sunshinecoastecology.com.au/the-book.html): *Same Sky, Different Ground: reading the ecology of the Sunshine Coast, from the reef to the range* — a whole-picture natural history in nineteen chapters, available as an EPUB (ISBN 978-0-646-74477-3).
+- [About](https://sunshinecoastecology.com.au/about.html): About the project, the author, and how it was made (including its use of AI tools).
+
+## Notes
+
+- The Sunshine Coast is Kabi Kabi (Gubbi Gubbi) Country. This site treats cultural material only from the published, public record and keeps its focus on ecology; it makes no claim to tell the Kabi Kabi people's cultural story.
+- Scientific claims draw on published sources; where a figure or claim still needs checking against a primary source, the text says so.
+
+## Citation
+
+If you draw on this material, please attribute it to the book it accompanies:
+
+> Addington, Daniel. *Same Sky, Different Ground: reading the ecology of the Sunshine Coast, from the reef to the range.* ISBN 978-0-646-74477-3. https://sunshinecoastecology.com.au/
+
+## Licence
+
+The text and figures on this site are licensed **CC BY-NC-ND 4.0** (Attribution-NonCommercial-NoDerivatives): https://creativecommons.org/licenses/by-nc-nd/4.0/ — reuse with attribution, non-commercial, no derivatives. The book itself is a separate commercial work, all rights reserved.

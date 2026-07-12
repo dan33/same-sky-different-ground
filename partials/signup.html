@@ -1,0 +1,162 @@
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  ssdg-signup — reusable inline email-capture block
+  Same Sky, Different Ground · website/partials/signup.html
+═══════════════════════════════════════════════════════════════════════════
+
+WHAT THIS IS
+  A self-contained signup band (HTML + scoped CSS + progressive JS) for the
+  seasonal dispatch / app waitlist / launch list. Copy everything between
+  the BEGIN/END markers below and paste it into any page on this site —
+  no other includes needed. It uses the site's CSS variables when present
+  and carries fallback values, so it also survives on a page without
+  assets/style.css. No external scripts, no CDN, no fonts of its own.
+
+HOW TO EMBED (three small edits per page)
+  1. Paste the BEGIN…END block where you want the band (see PLACEMENT).
+  2. Replace the two PAGE-NAME tokens:
+       · value="PAGE-NAME"  on the hidden fields[source] input — set it to
+         the page's short name (e.g. "this-month", "in-flower", "the-book")
+         so signups are attributable per page in the email provider.
+       · id="ssdg-email-PAGE-NAME" and its matching label for="…" — ids
+         must be unique per page; the page name keeps them so.
+  3. Replace YOUR_KIT_FORM_ID in the form action with the real Kit form ID
+     (same ID as join.html — one list, many doors).
+
+EMAIL PROVIDER (Kit, formerly ConvertKit)
+  Plain HTML POST to  https://app.kit.com/forms/<FORM_ID>/subscriptions
+  with field  email_address . No embed script required. Kit's free tier
+  covers 10,000 subscribers, sends the double-opt-in confirmation, and
+  supports the optional custom field "source" (create it in Kit, or the
+  hidden input is simply ignored). Until the ID is filled in, submitting
+  shows a polite "not connected yet" note pointing to the About page.
+
+BEHAVIOUR / DEGRADATION
+  · With JS: inline validation messages, a busy state, then a redirect to
+    thanks.html on success. Errors are announced via role="status".
+  · Without JS: the form still submits — Kit shows its own hosted
+    confirmation page instead of thanks.html. Nothing is lost.
+  · If join.html's copy of the same script is ever on the same page, the
+    data-bound guard prevents double-binding. The script binds every
+    <form data-signup> on the page, so one copy serves multiple bands.
+
+PLACEMENT (where this block should go, one per page)
+  index.html            — after the final content section, directly above
+                          the footer: the "you've seen the pitch" position.
+  this-month.html       — immediately after the 12-month grid ("get this
+                          as a letter" — the highest-intent spot on the site).
+  in-flower.html        — end of page, above the footer (same logic).
+  read-the-country.html — on/after the game-result screen, above the footer:
+                          the post-"whoa" moment.
+  the-book.html         — inside #buy, REPLACING the current
+                          "Email me when it's ready" mailto button.
+  field-guide.html      — end of page, above the footer.
+  ecosystems/forces/wonders/explore-map — optional; end of page if used.
+  join.html / thanks.html / about.html  — do NOT embed (join has the full
+                          form; thanks is post-signup; about has contact).
+
+ACCESSIBILITY
+  Visible label tied to the input, 16px+ input text (no iOS zoom), visible
+  focus outlines, status messages via aria-live, native required/email
+  validation as the first line of defence.
+═══════════════════════════════════════════════════════════════════════════
+-->
+
+<!-- BEGIN ssdg-signup (copy from here) -->
+<aside class="ssdg-signup" aria-labelledby="ssdg-signup-h">
+<style>
+/* ssdg-signup — scoped: every rule is prefixed, safe to paste anywhere */
+.ssdg-signup{background:var(--cream-2,#ece7da);border-top:1px solid var(--rule,#22231d);
+  border-bottom:1px solid var(--rule,#22231d);padding:3.4rem 0;
+  font-family:var(--serif,Georgia,'Times New Roman',serif);color:var(--ink,#22231d)}
+.ssdg-signup .ssdg-in{max-width:var(--wrap,1180px);margin:0 auto;padding:0 32px}
+.ssdg-signup .ssdg-cols{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:center}
+.ssdg-signup .ssdg-eyebrow{font-family:var(--sans,Arial,sans-serif);font-weight:600;text-transform:uppercase;
+  letter-spacing:.26em;font-size:.68rem;color:var(--terra,#a8593a);margin:0 0 .9em}
+.ssdg-signup h2{font-family:inherit;font-weight:380;line-height:1.12;color:var(--ink,#22231d);
+  font-size:clamp(1.5rem,2.6vw,2.1rem);margin:0 0 .45em}
+.ssdg-signup .ssdg-sub{font-size:1.02rem;line-height:1.55;color:var(--ink-soft,#4c4d42);margin:0}
+.ssdg-signup form{margin:0}
+.ssdg-signup label{display:block;font-family:var(--sans,Arial,sans-serif);font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft,#4c4d42);margin:0 0 .55rem}
+.ssdg-signup .ssdg-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.ssdg-signup input[type="email"]{flex:1 1 220px;min-width:0;font-family:var(--sans,Arial,sans-serif);
+  font-size:1.02rem;color:var(--ink,#22231d);padding:.85em 1em;border:1px solid var(--rule,#22231d);
+  background:var(--paper,#faf8f1);border-radius:0}
+.ssdg-signup input[type="email"]:focus-visible,.ssdg-signup button:focus-visible{
+  outline:3px solid var(--terra,#a8593a);outline-offset:2px}
+.ssdg-signup button{font-family:var(--sans,Arial,sans-serif);font-weight:600;font-size:.82rem;
+  letter-spacing:.09em;text-transform:uppercase;padding:1em 1.7em;border-radius:0;cursor:pointer;
+  background:var(--sage,#6a7355);color:var(--cream,#f3efe6);border:1px solid var(--sage,#6a7355);transition:.15s}
+.ssdg-signup button:hover{background:var(--ink,#22231d);border-color:var(--ink,#22231d)}
+.ssdg-signup button:disabled{opacity:.6;cursor:default}
+.ssdg-signup .ssdg-note{font-family:var(--sans,Arial,sans-serif);font-size:.78rem;line-height:1.55;
+  color:var(--muted,#6d6a5c);margin:.9rem 0 0}
+.ssdg-signup .ssdg-note a{color:var(--terra-deep,#94502f)}
+.ssdg-signup .ssdg-msg{font-family:var(--sans,Arial,sans-serif);font-size:.9rem;line-height:1.5;
+  margin:.9rem 0 0;padding:.75rem 1rem;background:var(--paper,#faf8f1);
+  border-left:3px solid var(--terra,#a8593a);color:var(--ink,#22231d)}
+.ssdg-signup .ssdg-msg[hidden]{display:none}
+@media(max-width:820px){
+  .ssdg-signup{padding:2.6rem 0}
+  .ssdg-signup .ssdg-in{padding:0 24px}
+  .ssdg-signup .ssdg-cols{grid-template-columns:1fr;gap:1.5rem}
+}
+</style>
+<div class="ssdg-in"><div class="ssdg-cols">
+  <div>
+    <p class="ssdg-eyebrow">The seasonal dispatch</p>
+    <h2 id="ssdg-signup-h">Know what the country is doing</h2>
+    <p class="ssdg-sub">A short free letter, about once a month: what's flowering, arriving and spawning on the coast, and where to see it — plus first word on the book (15 July 2026) and the <em>Reading the Country</em> app. <a href="join.html" style="color:var(--terra-deep,#94502f)">The full pitch is here.</a></p>
+  </div>
+  <form data-signup data-thanks="thanks.html" method="post" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions">
+    <input type="hidden" name="fields[source]" value="PAGE-NAME">
+    <label for="ssdg-email-PAGE-NAME">Your email address</label>
+    <div class="ssdg-row">
+      <input id="ssdg-email-PAGE-NAME" type="email" name="email_address" required autocomplete="email" spellcheck="false" placeholder="you@example.com">
+      <button type="submit">Count me in</button>
+    </div>
+    <p class="ssdg-msg" role="status" aria-live="polite" hidden></p>
+    <p class="ssdg-note">Free. About monthly. One confirmation email first; unsubscribe any time; your address goes nowhere else.</p>
+  </form>
+</div></div>
+<script>
+/* ssdg-signup enhancement — identical convention to join.html's script.
+   Binds every <form data-signup>; data-bound prevents double-binding. */
+(function () {
+  function show(el, text) { el.textContent = text; el.hidden = false; }
+  document.querySelectorAll('form[data-signup]').forEach(function (form) {
+    if (form.dataset.bound) return;
+    form.dataset.bound = '1';
+    var msg = form.querySelector('.ssdg-msg, .form-msg');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (e) {
+      // Not connected yet? (a real Kit action ends in /forms/<digits>/subscriptions)
+      if (!/\/forms\/\d+\/subscriptions/.test(form.action)) {
+        e.preventDefault();
+        show(msg, 'The signup service isn’t connected just yet. Until it is, use the email link on the About page and say “sign me up” — you’ll be added by hand, the old-fashioned way.');
+        return;
+      }
+      e.preventDefault();
+      var old = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending…'; msg.hidden = true;
+      fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+        })
+        .then(function (res) {
+          if (res.ok) { location.href = form.getAttribute('data-thanks') || 'thanks.html'; return; }
+          show(msg, (res.j && (res.j.error || (res.j.errors && res.j.errors[0]))) ||
+            'That didn’t go through — check the address and try again.');
+          btn.disabled = false; btn.textContent = old;
+        })
+        .catch(function () {
+          show(msg, 'Couldn’t reach the signup service — you may be offline. Try again when you have signal.');
+          btn.disabled = false; btn.textContent = old;
+        });
+    });
+  });
+})();
+</script>
+</aside>
+<!-- END ssdg-signup (copy to here) -->

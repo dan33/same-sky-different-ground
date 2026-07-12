@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Explore the Map — Same Sky, Different Ground</title>
+<meta name="description" content="An interactive relief map of the Sunshine Coast, built from elevation data — click the landmarks to read what they are and why they're there.">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f3efe6">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Same Sky, Different Ground">
+<meta property="og:title" content="Explore the Map — Same Sky, Different Ground">
+<meta property="og:description" content="An interactive relief map of the Sunshine Coast, built from elevation data — click the landmarks to read what they are and why they're there.">
+<meta property="og:url" content="https://sunshinecoastecology.com.au/explore-map.html">
+<meta property="og:image" content="https://sunshinecoastecology.com.au/assets/share-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sunshinecoastecology.com.au/explore-map.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://sunshinecoastecology.com.au/explore-map.html#page", "name": "Explore the Map", "description": "An interactive relief map of the Sunshine Coast, built from elevation data — click the landmarks to read what they are and why they're there.", "url": "https://sunshinecoastecology.com.au/explore-map.html", "mainEntityOfPage": "https://sunshinecoastecology.com.au/explore-map.html", "inLanguage": "en-AU", "isPartOf": {"@type": "WebSite", "name": "Same Sky, Different Ground", "url": "https://sunshinecoastecology.com.au/"}, "author": {"@type": "Person", "name": "Daniel Addington"}, "publisher": {"@type": "Organization", "name": "Same Sky, Different Ground", "url": "https://sunshinecoastecology.com.au/", "logo": {"@type": "ImageObject", "url": "https://sunshinecoastecology.com.au/assets/icons/icon-180.png"}}, "image": "https://sunshinecoastecology.com.au/assets/share-card.jpg", "datePublished": "2026-07-08", "dateModified": "2026-07-08", "isBasedOn": {"@type": "Book", "@id": "https://sunshinecoastecology.com.au/the-book.html#book", "name": "Same Sky, Different Ground", "author": {"@type": "Person", "name": "Daniel Addington"}}, "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sunshinecoastecology.com.au/"}, {"@type": "ListItem", "position": 2, "name": "Map", "item": "https://sunshinecoastecology.com.au/explore-map.html"}]}</script>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.maplayout{display:grid;grid-template-columns:minmax(320px,460px) 1fr;gap:2.5rem;align-items:start}
+.map-wrap{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.map-wrap img{display:block;width:100%}
+.hotspot{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;
+  border:2.5px solid #fff;background:var(--clay);cursor:pointer;padding:0;box-shadow:0 2px 6px rgba(0,0,0,.4);transition:.15s;
+  display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:11px;line-height:1;color:#fff}
+.hotspot::before{content:"";position:absolute;inset:-11px;border-radius:50%} /* 46px touch target */
+.hotspot:hover,.hotspot.active{background:var(--rainforest);transform:translate(-50%,-50%) scale(1.25);z-index:5}
+.hotspot::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--clay);opacity:.5;animation:pulse 2.2s infinite}
+.hotspot.active::after{border-color:var(--rainforest)}
+@keyframes pulse{0%{transform:scale(.7);opacity:.6}70%{transform:scale(1.5);opacity:0}100%{opacity:0}}
+.map-panel{position:sticky;top:84px}
+.map-panel .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 2rem;box-shadow:var(--shadow);min-height:220px;position:relative}
+.map-panel .num{display:inline-block;font-weight:700;color:#fff;background:var(--clay);border-radius:50%;width:28px;height:28px;line-height:28px;text-align:center;font-size:.9rem;margin-bottom:.8rem}
+.map-panel h3{margin:0 0 .4em}
+.map-panel .hint{color:var(--muted);font-style:italic}
+.map-panel .close{display:none;position:absolute;top:.8rem;right:.8rem;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:var(--cream-2);color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer}
+.map-list{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.map-list button{font-family:var(--sans);font-size:.85rem;border:1px solid var(--line);background:var(--paper);
+  color:var(--ink-soft);border-radius:0;padding:.45rem 1rem;cursor:pointer}
+.map-list button:hover,.map-list button.active{background:var(--rainforest);color:#fff;border-color:var(--rainforest)}
+@media(max-width:800px){
+  .maplayout{grid-template-columns:1fr}.map-panel{position:static}.map-wrap{max-width:460px;margin:0 auto}
+  /* On a phone the card becomes a bottom sheet so a tap on the map answers in place */
+  .map-panel .card.sheet{position:fixed;left:10px;right:10px;bottom:10px;z-index:70;max-height:44vh;overflow:auto;
+    box-shadow:0 -6px 40px rgba(12,38,33,.35);border-color:var(--rainforest)}
+  .map-panel .card.sheet .close{display:block}
+}
+/* Showcase — tap-to-enlarge affordance */
+.plate .frame{position:relative}
+.plate-zoom{display:block;position:relative;cursor:zoom-in}
+.plate-zoom picture{display:block}
+.zoom-badge{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:.4em;
+  font-family:var(--sans);font-weight:600;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;background:rgba(34,35,29,.74);padding:.4rem .6rem;pointer-events:none;
+  opacity:.94;transition:opacity .15s,background .15s}
+.plate-zoom:hover .zoom-badge,.plate-zoom:focus-visible .zoom-badge{opacity:1;background:var(--terra)}
+.zoom-badge .g{font-size:.95rem;line-height:1}
+/* In-page lightbox (no-JS falls back to the direct link) */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  background:rgba(20,22,17,.93);touch-action:pinch-zoom}
+.lightbox.open{display:grid}
+.lightbox img{max-width:96vw;max-height:90vh;width:auto;height:auto;object-fit:contain;
+  background:var(--paper);box-shadow:0 12px 64px rgba(0,0,0,.55);touch-action:pinch-zoom}
+.lb-close{position:fixed;top:14px;right:16px;z-index:210;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);background:rgba(20,22,17,.6);color:#fff;font-size:1.5rem;line-height:1;
+  cursor:pointer;display:grid;place-items:center;font-family:var(--sans)}
+.lb-close:hover{background:var(--terra);border-color:var(--terra)}
+.lb-cap{position:fixed;left:0;right:0;bottom:0;margin:0;padding:.9rem 1.2rem 1.1rem;text-align:center;
+  font-family:var(--sans);font-size:.8rem;color:rgba(255,255,255,.88);
+  background:linear-gradient(transparent,rgba(20,22,17,.72));pointer-events:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Same Sky, Different Ground</a>
+  <nav class="nav" aria-label="Site"><a href="forces.html">Forces</a><a href="wonders.html">Wonders</a><a href="ecosystems.html">Ecosystems</a><a href="field-guide.html">Field Guide</a><a href="explore-map.html">Map</a><a href="read-the-country.html">Read the country</a><a href="app.html">The app</a><a href="this-month.html">This Month</a><a href="the-book.html" class="buy">The book</a></nav>
+  <details class="mnav">
+    <summary aria-label="Site menu"><span class="bars" aria-hidden="true"></span>Menu</summary>
+    <nav class="sheet" aria-label="Site menu">
+      <a href="index.html">Home</a>
+      <a href="field-guide.html">Field guide</a>
+      <a href="explore-map.html">Explore the map</a>
+      <a href="ecosystems.html">Ecosystems</a>
+      <a href="forces.html">Forces</a>
+      <a href="wonders.html">Wonders</a>
+      <a href="read-the-country.html">Read the country</a>
+      <a href="app.html">The app</a>
+      <a href="in-flower.html">In flower now</a>
+      <a href="this-month.html">This month</a>
+      <a href="join.html">Join the list</a>
+      <div class="sep" role="separator"></div>
+      <a href="the-book.html" class="buy">The book</a>
+      <a href="prints.html">Prints</a>
+      <a href="about.html">About</a>
+    </nav>
+  </details>
+</div></header>
+
+<div id="main" class="page-hero"><div class="wrap narrow">
+  <p class="eyebrow">Explore the map</p>
+  <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">The whole coast, in relief</h1>
+  <p class="lead">This is the real shape of the land, built from elevation data — the ranges, the sand masses, the rivers and the passage, all sitting exactly where the weather left them. Click a landmark to read what it is and why it's there.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="maplayout">
+    <div class="map-wrap" id="mapwrap">
+      <img src="assets/relief.webp" alt="Shaded-relief map of the Sunshine Coast, from the Glass House Mountains and Pumicestone Passage in the south to Cooloola and Double Island Point in the north — the same canonical relief used in the book and the app" width="1600" height="2522" decoding="async">
+    </div>
+    <div class="map-panel">
+      <div class="card" id="mapcard" aria-live="polite">
+        <button class="close" id="mapclose" aria-label="Close">×</button>
+        <span class="num" id="mapnum" style="display:none"></span>
+        <h3 id="maptitle">Read the land itself</h3>
+        <p class="hint" id="maphint">The blue peaks, the high green ranges, the pale sand country, the tea-dark rivers — tap any marker to see what shaped it. On a phone, scroll the map and tap.</p>
+        <p id="mapdesc" style="display:none"></p>
+      </div>
+      <div class="map-list" id="maplist"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="plates"><div class="wrap">
+  <p class="eyebrow" style="color:var(--terra)">The maps</p>
+  <div class="hd"><h2>The same country, three ways</h2></div>
+  <p class="lead narrow" style="margin:-1.4rem 0 2.6rem">One relief, one palette, one set of names. The locality above the rock beneath the living cover — each map drawn on the same shaded base so they read against one another. On a phone, tap any map to open it full-size and pinch in.</p>
+  <div class="plate-grid">
+    <div class="plate"><figure>
+      <div class="frame"><a class="plate-zoom" href="assets/figures/locality-map.webp" data-cap="Fig 1.1 · Locality — reef to range, the ranges behind, the rivers between." aria-label="Enlarge the locality map"><span class="zoom-badge"><span class="g" aria-hidden="true">⤢</span> Tap to enlarge</span><img src="assets/figures/locality-map.webp" alt="Locality map of the Sunshine Coast: the coast from the Glass House Mountains to Cooloola, the Blackall and Conondale ranges behind, and the Mary, Maroochy and Noosa rivers between, labelled over shaded relief" width="947" height="1600" decoding="async" loading="lazy"></a></div>
+      <figcaption><span class="pl">Fig 1.1 · Locality</span><span class="cap">Where it all sits — reef to range, the ranges behind, the rivers between. The base map for everything that follows.</span></figcaption>
+    </figure></div>
+    <div class="plate"><figure>
+      <div class="frame"><a class="plate-zoom" href="assets/figures/zones-map.webp" data-cap="Ecological zones — the living cover, sorted, over the same relief. Pinch to read the detail." aria-label="Enlarge the ecological-zones map"><span class="zoom-badge"><span class="g" aria-hidden="true">⤢</span> Tap to enlarge</span><picture>
+        <source media="(max-width:640px)" srcset="assets/figures/zones-map-phone.webp">
+        <img src="assets/figures/zones-map.webp" alt="Ecological-zones map of the Sunshine Coast: rainforest, wet and dry sclerophyll forest, wallum and heath, paperbark swamp and wetland, mangrove and saltmarsh, laid as coloured cover over the same shaded relief" width="947" height="1600" decoding="async" loading="lazy">
+      </picture></a></div>
+      <figcaption><span class="pl">Ecological zones</span><span class="cap">The living cover, sorted — rainforest, sclerophyll forest, wallum, wetland and mangrove, over the same relief.</span></figcaption>
+    </figure></div>
+    <div class="plate"><figure>
+      <div class="frame"><a class="plate-zoom" href="assets/figures/geology-map.webp" data-cap="Fig 2.1 · Geology — the bones underneath, coloured by land zone." aria-label="Enlarge the geology map"><span class="zoom-badge"><span class="g" aria-hidden="true">⤢</span> Tap to enlarge</span><img src="assets/figures/geology-map.webp" alt="Geology and land-zone map of the Sunshine Coast: basalt tablelands in terra red, metamorphic ranges in sage, igneous plugs in mauve, sedimentary lowlands and coastal sand, coloured by land zone over shaded relief" width="947" height="1600" decoding="async" loading="lazy"></a></div>
+      <figcaption><span class="pl">Fig 2.1 · Geology</span><span class="cap">The bones underneath, coloured by land zone — basalt, metamorphic range, igneous plug and sand. Why the country grows what it grows.</span></figcaption>
+    </figure></div>
+  </div>
+  <p style="font-family:var(--sans);font-size:.78rem;line-height:1.6;color:var(--muted);margin:2.4rem 0 0;max-width:68ch">Relief from the Copernicus GLO-30 DEM (© DLR/ESA, CC BY 4.0). Regional-ecosystem and land-zone mapping: State of Queensland (Department of Environment, Science and Innovation), CC BY 4.0. Every map here shares one base, palette and type with the book and the app.</p>
+</div></section>
+
+<section class="section-tan" style="padding:3rem 0"><div class="wrap narrow" style="text-align:center">
+  <h2>Want to read it on the ground?</h2>
+  <p class="lead">The map is the shape of the land. The field guide is how to read it once you're standing in it — the five-minute method, where to go, what's safe. Free, and made for a pocket.</p>
+  <a class="btn btn-primary" href="field-guide.html">Open the field guide</a> <a class="btn btn-ghost" href="the-book.html">About the book</a>
+</div></section>
+
+<footer class="site-foot"><div class="wrap">
+  <div class="foot-grid">
+    <div><strong style="font-family:var(--serif);font-size:1.1rem;color:#fbf3dd">Same Sky, Different Ground</strong><br>Reading the ecology of the Sunshine Coast, from the reef to the range.</div>
+    <nav class="foot-links" aria-label="Site map">
+      <a href="index.html">Home</a><a href="field-guide.html">Field guide</a>
+      <a href="explore-map.html">Map</a><a href="ecosystems.html">Ecosystems</a>
+      <a href="forces.html">Forces</a><a href="wonders.html">Wonders</a>
+      <a href="read-the-country.html">Read the country</a><a href="app.html">The app</a><a href="in-flower.html">In flower</a><a href="this-month.html">This month</a><a href="join.html">Join</a>
+      <a href="prints.html">Prints</a><a href="the-book.html">The book</a><a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="foot-note foot-cite">An open companion to the book <cite>Same Sky, Different Ground</cite> by Daniel Addington. If you quote or build on this, please cite the book and link back to this site. Site text and figures are licensed <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</p>
+    <p class="foot-note">Relief from the Copernicus 30 m DEM (© DLR/ESA, CC BY 4.0). The Sunshine Coast is Kabi Kabi (Gubbi Gubbi) Country.</p>
+</div></footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged map">
+  <button class="lb-close" id="lbClose" aria-label="Close enlarged map" type="button">×</button>
+  <img id="lbImg" src="" alt="" decoding="async">
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script>
+// Tap-to-enlarge lightbox — dependency-free, in-page. Each showcase map keeps its
+// direct-link href as a no-JS fallback; when JS runs we intercept the click and open
+// an overlay whose plain <img> allows the browser's native pinch-zoom (touch-action).
+(function(){
+  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
+      lbClose=document.getElementById('lbClose'), lbCap=document.getElementById('lbCap'), lastFocus=null;
+  function open(src,alt,cap){
+    lastFocus=document.activeElement;
+    lbImg.src=src; lbImg.alt=alt||''; lbCap.textContent=cap||'';
+    lb.classList.add('open'); document.body.style.overflow='hidden';
+    lbClose.focus(); document.addEventListener('keydown',onKey);
+  }
+  function close(){
+    lb.classList.remove('open'); document.body.style.overflow='';
+    lbImg.removeAttribute('src'); document.removeEventListener('keydown',onKey);
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  function onKey(e){
+    if(e.key==='Escape'){e.preventDefault();close();}
+    else if(e.key==='Tab'){e.preventDefault();lbClose.focus();} // trap: close is the only control
+  }
+  lbClose.addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); }); // backdrop tap closes
+  document.querySelectorAll('.plate-zoom').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var img=a.querySelector('img');
+      open(a.getAttribute('href'), img?img.alt:'', a.getAttribute('data-cap')||'');
+    });
+  });
+})();
+</script>
+<script>
+// Landmark positions are computed from each place's real latitude/longitude against the
+// canonical relief's bounds (W 152.45 · E 153.30 · S −27.00 · N −25.80, 1600×2522 px —
+// see assets/figures/MAP-STYLE.md and reading-the-country/src/lib/map-bounds.json), so the
+// markers sit exactly where they do on the shared basemap used by the book and the app.
+var HOTSPOTS = [
+  {s:"glass-house-mountains",l:51.4,t:91.6,n:"Glass House Mountains",d:"Mountains only by courtesy — the frozen plumbing of 26–27 million-year-old volcanoes, left standing while everything softer washed away. Look for hard rhyolite and trachyte plugs rising sheer and alone off the flat plain."},
+  {s:"cooloola",l:71.8,t:25.0,n:"Cooloola sand mass",d:"A vast field of dunes that grow older the further inland you walk — a whole history of soil laid out in a row. Look for: bleached white sand, spring wildflowers, and tea-dark blackwater in the hollows."},
+  {s:"blackall-range",l:49.4,t:75.0,n:"Blackall Range",d:"A basalt tableland — the green wall of the hinterland, carrying the richest soil on the coast. Look for chocolate-red earth and closed, dripping rainforest along the range top."},
+  {s:"conondale-range",l:20.0,t:70.8,n:"Conondale Range",d:"The rugged western ranges, where the north-flowing Mary rises. Look for steep, folded forest country and cool, clear streams cutting through the hard old rock."},
+  {s:"mount-coolum",l:74.6,t:63.5,n:"Mount Coolum",d:"A bare dome of rhyolite with nothing for company on the coastal plain. Look for the way the pale rock rises straight out of dead-flat sand country — no foothills, no warning."},
+  {s:"noosa-river",l:68.2,t:41.7,n:"Noosa River & lakes",d:"The Noosa River, its chain of lakes and the tannin-dark Everglades. Look for the stillness and the stain — tannin, picked up as the water drains through sand country."},
+  {s:"maroochy-river",l:70.6,t:68.3,n:"Maroochy River",d:"The Maroochy floodplain and estuary, meeting the sea at Maroochydore. Look for: cane flats, paperbark hollows and mangroves reading the tide at the mouth."},
+  {s:"mary-river",l:25.9,t:66.7,n:"Mary River",d:"Rises behind the range near Maleny and runs the other way — north — barred from the nearby sea by the high volcanic country. Look for water heading calmly away from the ocean, downhill the whole way."},
+  {s:"pumicestone-passage",l:81.8,t:93.3,n:"Pumicestone Passage & Bribie",d:"A long sand island with a sheltered tidal passage behind it. Look for calm water, sandflats and mangroves — and go at low tide, when the passage shows its workings."}
+];
+var wrap=document.getElementById('mapwrap'), list=document.getElementById('maplist'),
+    card=document.getElementById('mapcard'), isPhone=window.matchMedia('(max-width:800px)');
+function select(i,quiet){
+  var h=HOTSPOTS[i];
+  document.getElementById('mapnum').style.display='inline-block';
+  document.getElementById('mapnum').textContent=i+1;
+  document.getElementById('maptitle').textContent=h.n;
+  document.getElementById('maphint').style.display='none';
+  var d=document.getElementById('mapdesc'); d.style.display='block'; d.textContent=h.d;
+  document.querySelectorAll('.hotspot').forEach(function(el,j){el.classList.toggle('active',j===i);});
+  document.querySelectorAll('.map-list button').forEach(function(el,j){el.classList.toggle('active',j===i);});
+  if(isPhone.matches) card.classList.add('sheet');
+  if(!quiet && history.replaceState) history.replaceState(null,'','#'+h.s);
+}
+function closeSheet(){
+  card.classList.remove('sheet');
+  document.querySelectorAll('.hotspot,.map-list button').forEach(function(el){el.classList.remove('active');});
+}
+document.getElementById('mapclose').onclick=closeSheet;
+HOTSPOTS.forEach(function(h,i){
+  var b=document.createElement('button'); b.className='hotspot'; b.style.left=h.l+'%'; b.style.top=h.t+'%';
+  b.textContent=(i+1); b.setAttribute('aria-label',h.n); b.onclick=function(){select(i);}; wrap.appendChild(b);
+  var t=document.createElement('button'); t.textContent=(i+1)+'. '+h.n; t.onclick=function(){select(i);}; list.appendChild(t);
+});
+// Deep links: explore-map.html#blackall-range opens with that landmark selected;
+// otherwise preselect the first landmark on desktop so the panel isn't empty.
+(function(){
+  var slug=location.hash.replace('#','');
+  if(slug){ HOTSPOTS.forEach(function(h,i){ if(h.s===slug) select(i,true); }); return; }
+  if(!isPhone.matches) select(0,true);
+})();
+</script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

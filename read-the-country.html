@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en-AU" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Read the Country — the reef-to-range gradient explorer — Same Sky, Different Ground</title>
+<meta name="description" content="Travel the Sunshine Coast from the reef to the range and learn to read any landscape. At each stop — reef, estuary, wallum, swamp, eucalypt forest, rainforest — see what's there and why the rock, soil, water and fire make it so. Then test yourself.">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f3efe6">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Same Sky, Different Ground">
+<meta property="og:title" content="Read the Country — the reef-to-range gradient explorer">
+<meta property="og:description" content="Travel the Sunshine Coast from the reef to the range and learn to read any landscape — at each stop, what's there and why the rock, soil, water and fire make it so.">
+<meta property="og:url" content="https://sunshinecoastecology.com.au/read-the-country.html">
+<meta property="og:image" content="https://sunshinecoastecology.com.au/assets/share-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sunshinecoastecology.com.au/read-the-country.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "@id": "https://sunshinecoastecology.com.au/read-the-country.html#page", "name": "Read the Country — the reef-to-range gradient explorer", "description": "Travel the Sunshine Coast from the reef to the range and learn to read any landscape. At each stop, see what's there and why the rock, soil, water and fire make it so.", "url": "https://sunshinecoastecology.com.au/read-the-country.html", "mainEntityOfPage": "https://sunshinecoastecology.com.au/read-the-country.html", "inLanguage": "en-AU", "learningResourceType": "Interactive explorer", "teaches": "How to read a landscape — recognising ecosystems on the Sunshine Coast from soil, water, fire and vegetation, along the reef-to-range gradient.", "educationalLevel": "General audience", "isPartOf": {"@type": "WebSite", "name": "Same Sky, Different Ground", "url": "https://sunshinecoastecology.com.au/"}, "author": {"@type": "Person", "name": "Daniel Addington"}, "publisher": {"@type": "Organization", "name": "Same Sky, Different Ground", "url": "https://sunshinecoastecology.com.au/", "logo": {"@type": "ImageObject", "url": "https://sunshinecoastecology.com.au/assets/icons/icon-180.png"}}, "image": "https://sunshinecoastecology.com.au/assets/share-card.jpg", "datePublished": "2026-07-08", "dateModified": "2026-07-09", "isBasedOn": {"@type": "Book", "@id": "https://sunshinecoastecology.com.au/the-book.html#book", "name": "Same Sky, Different Ground", "author": {"@type": "Person", "name": "Daniel Addington"}}, "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "The reef-to-range gradient — six worlds of the Sunshine Coast", "description": "The ordered sequence of ecosystems from the reef to the range, set by rock, soil, water and fire.", "itemListOrder": "https://schema.org/ItemListOrderAscending", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sea country & reef", "description": "The land's gradient carried underwater — seagrass and sand flats to the headland reefs, where warm and cool currents meet."}, {"@type": "ListItem", "position": 2, "name": "Estuary, mangrove & saltmarsh", "description": "Where the rivers meet the tide: airless, salty mud flooded twice a day — the coast's most productive ground and its fishery nursery."}, {"@type": "ListItem", "position": 3, "name": "Wallum heath & dunes", "description": "Heath on bright, acid, nutrient-poor sand — the poorest ground yet the richest flora on the coast."}, {"@type": "ListItem", "position": 4, "name": "Paperbark swamp & floodplain", "description": "Melaleuca swamp in the floodplain's wet hollows — flood sponge, water filter and nursery on waterlogged alluvial mud."}, {"@type": "ListItem", "position": 5, "name": "Eucalypt forest & woodland", "description": "Open gum forest over a grassy floor on thin, free-draining loam — fire's own country."}, {"@type": "ListItem", "position": 6, "name": "Rainforest — the range", "description": "The big scrub on deep red basalt clay: richest soil, gentlest climate, and fire kept out."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sunshinecoastecology.com.au/"}, {"@type": "ListItem", "position": 2, "name": "Read the country", "item": "https://sunshinecoastecology.com.au/read-the-country.html"}]}</script>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ══ Read the Country — flagship gradient explorer (page-scoped, prefix rtc-) ══ */
+
+/* one-rule strip */
+.rtc-rule{background:var(--ink);color:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2.6rem 0}
+.rtc-rule .wrap{max-width:900px}
+.rtc-rule .eyebrow{color:var(--sand)}
+.rtc-rule p.napkin{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.35;font-weight:360;margin:0;color:var(--paper)}
+.rtc-rule p.napkin b{font-weight:600;color:#fff;font-style:normal}
+.rtc-rule .sub{font-family:var(--sans);font-size:.95rem;color:#c9c4b4;margin:1rem 0 0;max-width:60ch}
+
+/* explorer shell */
+.rtc-explorer{max-width:960px;margin:0 auto;border:1px solid var(--rule);background:var(--paper)}
+.rtc-spine{position:relative;background:linear-gradient(#e8f2f5,#f6f0e2);border-bottom:1px solid var(--rule)}
+.rtc-spine svg{display:block;width:100%;height:auto}
+/* band dim/active */
+.rtc-spine .band{transition:opacity .45s ease, filter .45s ease}
+.js .rtc-spine.dim .band{opacity:.34;filter:saturate(.5)}
+.js .rtc-spine.dim .band.on{opacity:1;filter:none}
+.rtc-spine .lbl{transition:fill .3s, font-weight .3s, opacity .3s}
+.js .rtc-spine.dim .lbl{opacity:.5}
+.js .rtc-spine.dim .lbl.on{opacity:1;font-weight:700}
+.rtc-marker{transition:transform .55s cubic-bezier(.5,.05,.2,1)}
+.rtc-elev{position:absolute;top:.6rem;right:.7rem;font-family:var(--sans);font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);background:rgba(250,248,241,.82);
+  padding:.3rem .6rem;border:1px solid var(--line)}
+.no-js .rtc-elev{display:none}
+
+/* progress + dots */
+.rtc-track{display:flex;align-items:center;gap:.5rem;padding:.9rem 1.2rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.no-js .rtc-track{display:none}
+.rtc-dots{display:flex;gap:.35rem;flex:1;min-width:180px}
+.rtc-dots button{flex:1;height:auto;padding:.3rem .1rem .45rem;background:none;border:0;border-top:3px solid var(--cream-2);
+  cursor:pointer;font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;
+  color:var(--stone);line-height:1.15;transition:.2s;text-align:center}
+.rtc-dots button:hover{color:var(--ink);border-top-color:var(--stone)}
+.rtc-dots button.on{color:var(--terra-deep);border-top-color:var(--terra)}
+.rtc-count{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media(max-width:560px){
+  /* stop the six tab labels colliding with the counter — give the counter its
+     own row and collapse the tabs to their coloured position-bars (the label
+     text stays in the DOM for screen readers; the active stop names itself) */
+  .rtc-count{flex-basis:100%;order:-1;text-align:center;margin-bottom:.15rem}
+  .rtc-dots{min-width:0;flex-basis:100%;gap:.3rem}
+  .rtc-dots button{font-size:0;min-height:22px;padding:.55rem .1rem}
+}
+
+/* stops */
+.rtc-stops{padding:1.6rem 1.6rem 0}
+.no-js .rtc-stops{padding:0}
+.rtc-stop{padding:.4rem 0 1.8rem}
+.no-js .rtc-stop{padding:2.2rem 1.6rem;border-bottom:1px solid var(--line)}
+.no-js .rtc-stop:first-child{border-top:1px solid var(--line)}
+.js .rtc-stop{display:none}
+.js .rtc-stop.active{display:block;animation:rtc-fade .5s ease}
+@keyframes rtc-fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rtc-kicker{font-family:var(--sans);font-weight:600;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);margin:0 0 1.1rem}
+.rtc-kicker .swx{display:inline-block;width:11px;height:11px;margin-right:.5rem;transform:translateY(1px);border:1px solid rgba(0,0,0,.18)}
+.rtc-cue-l,.rtc-look-l{font-family:var(--sans);font-weight:700;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin:0 0 .35rem}
+.rtc-cue{font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.72rem);line-height:1.34;font-weight:370;color:var(--ink);margin:0 0 1.4rem}
+.rtc-stop h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .3em}
+.rtc-what{font-size:1.08rem;color:var(--ink-soft);line-height:1.5;margin:0 0 1.5rem;max-width:62ch}
+
+/* the WHY — causal chain */
+.rtc-why{margin:0 0 1.6rem}
+.rtc-why-l{font-family:var(--sans);font-weight:700;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin:0 0 .7rem}
+.rtc-chain{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);background:var(--rule)}
+.rtc-link{background:var(--cream);padding:.85rem .9rem 1rem;position:relative}
+.js .rtc-stop.active .rtc-link{animation:rtc-rise .5s ease backwards}
+.js .rtc-stop.active .rtc-link:nth-child(1){animation-delay:.05s}
+.js .rtc-stop.active .rtc-link:nth-child(2){animation-delay:.16s}
+.js .rtc-stop.active .rtc-link:nth-child(3){animation-delay:.27s}
+.js .rtc-stop.active .rtc-link:nth-child(4){animation-delay:.38s}
+.js .rtc-stop.active .rtc-link:nth-child(5){animation-delay:.49s}
+@keyframes rtc-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rtc-link .k{font-family:var(--sans);font-weight:700;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-deep);margin:0 0 .35rem;display:flex;align-items:center;gap:.35rem}
+.rtc-link .k svg{width:15px;height:15px;flex:0 0 auto}
+.rtc-link .v{font-family:var(--sans);font-size:.83rem;line-height:1.4;color:var(--ink-soft);margin:0}
+.rtc-link.none .v{color:var(--stone);font-style:italic}
+.rtc-link:not(:last-child)::after{content:"";position:absolute;right:-7px;top:50%;width:12px;height:12px;
+  background:var(--cream);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  transform:translateY(-50%) rotate(-45deg);z-index:2}
+@media(max-width:640px){
+  .rtc-chain{grid-template-columns:1fr}
+  .rtc-link:not(:last-child)::after{right:50%;top:auto;bottom:-7px;transform:translateX(50%) rotate(45deg);
+    border-right:none;border-bottom:none;border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+}
+
+/* look-for list */
+.rtc-look{list-style:none;margin:0 0 1.6rem;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem .9rem}
+.rtc-look li{position:relative;padding-left:1.4rem;font-family:var(--sans);font-size:.92rem;line-height:1.45;color:var(--ink-soft)}
+.rtc-look li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--terra);transform:rotate(45deg)}
+@media(max-width:560px){.rtc-look{grid-template-columns:1fr}}
+
+/* figure */
+.rtc-fig{margin:0 0 .4rem;border:1px solid var(--line);background:var(--cream)}
+.rtc-fig img{width:100%;display:block}
+.rtc-fig figcaption{font-family:var(--sans);font-size:.78rem;line-height:1.45;color:var(--muted);padding:.6rem .8rem}
+.rtc-fig figcaption b{color:var(--terra-deep);font-weight:700}
+
+/* controls */
+.rtc-ctrl{display:flex;align-items:center;gap:.8rem;padding:1.1rem 1.6rem 1.6rem;border-top:1px solid var(--line)}
+.no-js .rtc-ctrl{display:none}
+.rtc-ctrl .grow{flex:1;font-family:var(--sans);font-size:.8rem;color:var(--muted);text-align:center;line-height:1.3}
+.rtc-btn{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.85em 1.3em;border:1px solid var(--rule);background:var(--cream);color:var(--ink);cursor:pointer;transition:.15s;white-space:nowrap}
+.rtc-btn:hover:not(:disabled){background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.rtc-btn:disabled{opacity:.35;cursor:default}
+.rtc-btn.prim{background:var(--sage);color:var(--cream);border-color:var(--sage)}
+.rtc-btn.prim:hover{background:var(--ink);border-color:var(--ink)}
+@media(max-width:560px){
+  .rtc-ctrl{gap:.5rem;padding:.9rem 1rem 1.2rem}
+  .rtc-ctrl .grow{display:none}
+  .rtc-btn{flex:1;text-align:center;padding:.95em .6em}
+}
+
+/* visually-hidden live region */
+.rtc-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ══ quiz (kept from the original, tidied) ══ */
+.game{max-width:720px;margin:0 auto}
+.game-card{background:var(--paper);border:1px solid var(--rule);border-radius:0;padding:2rem 2rem 1.8rem}
+.scene{font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:var(--ink)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1.6rem 0 0}
+.opts button{font-family:var(--sans);font-size:1rem;font-weight:500;text-align:left;padding:.9rem 1.1rem;
+  border:1.5px solid var(--line);background:var(--cream);border-radius:0;cursor:pointer;transition:.12s;color:var(--ink)}
+.opts button:hover:not(:disabled){border-color:var(--sage);background:#fff}
+.opts button.correct{background:#e6f2e2;border-color:var(--sage);color:#1f5a30;font-weight:700}
+.opts button.wrong{background:#f6e2dc;border-color:var(--terra);color:#8a3418}
+.opts button:disabled{cursor:default}
+.qwhy{margin-top:1.4rem;padding:1.1rem 1.3rem;background:var(--cream-2);border-left:4px solid var(--sage);display:none}
+.qwhy.show{display:block}
+.qwhy .verdict{font-weight:700;margin-bottom:.3rem}
+.game-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;color:var(--muted);font-size:.92rem;font-family:var(--sans)}
+.progress{height:4px;background:var(--cream-2);overflow:hidden;margin-bottom:1.6rem}
+.progress span{display:block;height:100%;background:var(--sage);transition:.4s;width:0}
+.game-actions{margin-top:1.6rem;text-align:right;min-height:1px}
+.result{text-align:center}
+.result .big{font-family:var(--serif);font-size:3.4rem;color:var(--sage);margin:.2rem 0}
+@media(max-width:520px){.opts{grid-template-columns:1fr}.scene{font-size:1.15rem}}
+
+/* CTA cards */
+.rtc-cta{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--rule);background:var(--rule);margin-top:2.5rem}
+@media(max-width:700px){.rtc-cta{grid-template-columns:1fr}}
+.rtc-cta .card{background:var(--paper);padding:2rem 2rem 2.1rem;display:flex;flex-direction:column}
+.rtc-cta .card .eyebrow{color:var(--terra)}
+.rtc-cta .card h3{font-size:1.5rem;margin:0 0 .4em}
+.rtc-cta .card p{color:var(--ink-soft);font-size:1rem;margin:0 0 1.4rem;flex:1}
+.rtc-cta .card .btn{align-self:flex-start}
+
+@media (prefers-reduced-motion: reduce){
+  .rtc-spine .band,.rtc-marker,.rtc-stop.active,.rtc-link,.rtc-spine .lbl,.progress span{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Same Sky, Different Ground</a>
+  <nav class="nav" aria-label="Site"><a href="forces.html">Forces</a><a href="wonders.html">Wonders</a><a href="ecosystems.html">Ecosystems</a><a href="field-guide.html">Field Guide</a><a href="explore-map.html">Map</a><a href="read-the-country.html">Read the country</a><a href="app.html">The app</a><a href="this-month.html">This Month</a><a href="the-book.html" class="buy">The book</a></nav>
+  <details class="mnav">
+    <summary aria-label="Site menu"><span class="bars" aria-hidden="true"></span>Menu</summary>
+    <nav class="sheet" aria-label="Site menu">
+      <a href="index.html">Home</a>
+      <a href="field-guide.html">Field guide</a>
+      <a href="explore-map.html">Explore the map</a>
+      <a href="ecosystems.html">Ecosystems</a>
+      <a href="forces.html">Forces</a>
+      <a href="wonders.html">Wonders</a>
+      <a href="read-the-country.html">Read the country</a>
+      <a href="app.html">The app</a>
+      <a href="in-flower.html">In flower now</a>
+      <a href="this-month.html">This month</a>
+      <a href="join.html">Join the list</a>
+      <div class="sep" role="separator"></div>
+      <a href="the-book.html" class="buy">The book</a>
+      <a href="prints.html">Prints</a>
+      <a href="about.html">About</a>
+    </nav>
+  </details>
+</div></header>
+
+<div id="main" class="page-hero"><div class="wrap narrow">
+  <p class="eyebrow">The reef-to-range gradient · an explorer</p>
+  <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Read the country</h1>
+  <p class="lead">Six worlds, one short slope. Travel the Sunshine Coast from the reef to the range and, at each stop, see not just <em>what</em> is growing there but <em>why</em> — the chain that runs from the rock, through the soil and the water and the fire, to the living thing in front of you. Learn to read that chain once, and you can read almost any patch of ground you stand on.</p>
+</div></div>
+
+<!-- THE ONE RULE -->
+<div class="rtc-rule"><div class="wrap">
+  <p class="eyebrow">The whole trick, on a napkin</p>
+  <p class="napkin"><b>Geology writes the rules, soils translate them, living things live them out</b> — and people change them. The same rain falls on most of this slope. What changes, top to bottom, is the ground itself.</p>
+  <p class="sub">So don't start with the leaf. Start with the rock and the soil and the water, and the plants fall into place. That's the reading skill this explorer teaches, one stop at a time.</p>
+</div></div>
+
+<section style="padding-top:3rem"><div class="wrap">
+
+  <div class="rtc-explorer" id="explorer" aria-roledescription="Interactive explorer" aria-label="The reef-to-range gradient, stop by stop">
+
+    <!-- SPINE: mirrored cross-section, sea on the left, the range rising to the right -->
+    <div class="rtc-spine dim" id="spine">
+      <span class="rtc-elev" id="elev" aria-hidden="true">Sea level</span>
+      <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cross-section of the Sunshine Coast rising from the reef on the left to the rainforest range on the right, with six ecosystem bands.">
+        <defs>
+          <linearGradient id="rtc-water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3aa79c"/><stop offset="1" stop-color="#0f565a"/></linearGradient>
+        </defs>
+
+        <!-- REEF (sea) -->
+        <g class="band on" id="rtc-band-reef">
+          <polygon points="0,300 210,300 210,420 0,420" fill="url(#rtc-water)"/>
+          <path d="M8 300 q22 -7 44 0 t44 0 t44 0 t44 0 t22 0" stroke="#bfeae6" stroke-width="2.5" fill="none" opacity=".55"/>
+          <path d="M70 400 q-5 -24 0 -42 M84 400 q6 -22 1 -40" stroke="#2f6b3b" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <ellipse cx="135" cy="392" rx="26" ry="9" fill="#cf9038"/>
+          <circle cx="150" cy="360" r="5" fill="#e9c14a"/><circle cx="120" cy="345" r="4" fill="#e07a4a"/>
+        </g>
+        <!-- ESTUARY (tidal mud) -->
+        <g class="band" id="rtc-band-estuary">
+          <polygon points="210,300 210,420 360,420 360,296 320,297 260,299" fill="#8b8375"/>
+          <ellipse cx="288" cy="278" rx="14" ry="12" fill="#3f6b52"/>
+          <path d="M288 290 l-10 14 M288 290 l10 14 M282 293 l-5 11 M294 293 l5 11" stroke="#4a3f30" stroke-width="2.5" fill="none"/>
+          <ellipse cx="332" cy="284" rx="11" ry="9" fill="#4a7a5c"/>
+        </g>
+        <!-- WALLUM (bleached sand) -->
+        <g class="band" id="rtc-band-wallum">
+          <polygon points="360,296 360,420 510,420 510,290 470,286 420,290" fill="#e7d7a6"/>
+          <ellipse cx="400" cy="272" rx="16" ry="8" fill="#b7a24c"/><circle cx="392" cy="267" r="3.4" fill="#d94f6a"/><circle cx="409" cy="268" r="3.4" fill="#e8c14a"/>
+          <ellipse cx="462" cy="276" rx="14" ry="7" fill="#c2ae5a"/><circle cx="470" cy="272" r="3" fill="#d98b2b"/>
+        </g>
+        <!-- SWAMP (dark alluvium) -->
+        <g class="band" id="rtc-band-swamp">
+          <polygon points="510,290 510,420 640,420 640,284 590,282 550,288" fill="#7a6f57"/>
+          <rect x="556" y="250" width="4" height="34" fill="#e4dccb"/><ellipse cx="558" cy="246" rx="11" ry="16" fill="#5f9078"/>
+          <rect x="606" y="252" width="4" height="32" fill="#e4dccb"/><ellipse cx="608" cy="248" rx="10" ry="15" fill="#6b9a80"/>
+        </g>
+        <!-- EUCALYPT (thin loam) -->
+        <g class="band" id="rtc-band-eucalypt">
+          <polygon points="640,284 640,420 800,420 800,178 720,232 680,262" fill="#c9a86f"/>
+          <path d="M690 262 q-3 -34 1 -58" stroke="#6b5a3f" stroke-width="4" fill="none"/>
+          <ellipse cx="686" cy="196" rx="14" ry="10" fill="#6f8f43"/><ellipse cx="700" cy="188" rx="12" ry="9" fill="#87a259"/>
+          <path d="M756 232 q-3 -30 0 -52" stroke="#5a4a33" stroke-width="4" fill="none"/>
+          <ellipse cx="752" cy="176" rx="13" ry="9" fill="#7c9350"/><ellipse cx="766" cy="182" rx="11" ry="8" fill="#6f8f43"/>
+        </g>
+        <!-- RAINFOREST (red basalt clay) -->
+        <g class="band" id="rtc-band-rainforest">
+          <polygon points="800,178 850,120 910,86 960,92 1000,110 1000,420 800,420" fill="#a2512f"/>
+          <path d="M902 130 l0 -32 M890 106 q12 -15 24 0 M884 118 q18 -17 36 0" stroke="#7a3a22" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="902" cy="96" rx="22" ry="20" fill="#2f6b3b"/>
+          <ellipse cx="852" cy="150" rx="16" ry="15" fill="#356f3d"/>
+          <ellipse cx="958" cy="126" rx="15" ry="14" fill="#2f6b3b"/>
+        </g>
+
+        <!-- profile line -->
+        <polyline points="210,300 260,299 320,297 360,296 420,290 470,286 510,290 550,288 590,282 640,284 680,262 720,232 800,178 850,120 910,86 960,92 1000,110" fill="none" stroke="#2a2418" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <!-- baseline labels -->
+        <g font-family="Inter,sans-serif" font-size="15" font-weight="600" fill="#2a2418" text-anchor="middle">
+          <text x="105" y="412" class="lbl on" data-b="reef" fill="#eafffb">Reef</text>
+          <text x="285" y="412" class="lbl" data-b="estuary" fill="#f6f2e6">Estuary</text>
+          <text x="435" y="412" class="lbl" data-b="wallum">Wallum</text>
+          <text x="575" y="412" class="lbl" data-b="swamp" fill="#f6f2e6">Swamp</text>
+          <text x="720" y="412" class="lbl" data-b="eucalypt">Eucalypt</text>
+          <text x="905" y="412" class="lbl" data-b="rainforest" fill="#f6f2e6">Rainforest</text>
+        </g>
+
+        <!-- you-are-here marker -->
+        <g class="rtc-marker" id="marker" transform="translate(105,300)" aria-hidden="true">
+          <line x1="0" y1="0" x2="0" y2="-30" stroke="#a8593a" stroke-width="2.5"/>
+          <circle cx="0" cy="-36" r="8" fill="#a8593a" stroke="#faf8f1" stroke-width="2.5"/>
+          <circle cx="0" cy="0" r="4" fill="#a8593a"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- PROGRESS / DOTS -->
+    <div class="rtc-track">
+      <div class="rtc-dots" id="dots" role="tablist" aria-label="Choose a stop on the gradient"></div>
+      <span class="rtc-count" id="count">Stop 1 of 6</span>
+    </div>
+
+    <!-- STOPS (real HTML — readable with JS off, crawlable) -->
+    <div class="rtc-stops" id="stops">
+
+      <article class="rtc-stop active" id="stop-reef" data-band="reef" data-elev="Sea level &amp; below" data-x="105" data-y="300" data-eco="sea" tabindex="-1" aria-labelledby="h-reef">
+        <p class="rtc-kicker"><span class="swx" style="background:#2ea198"></span>Stop 1 of 6 · Reef → range</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">Warm, clear water over a rocky headland — and hard coral growing a fin's length from a cool-water sponge.</p>
+        <h2 id="h-reef">Sea country &amp; reef</h2>
+        <p class="rtc-what">The land's gradient doesn't stop at the beach. It runs on underwater, through seagrass meadows and sand flats to the headland reefs — the far, wet end of one continuous slope from the range to the reef.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 12l3-5 3 3 3-6 3 8z" fill="#94502f"/></svg>Rock</p><p class="v">Drowned bedrock and a floor of sand and rubble.</p></div>
+            <div class="rtc-link none"><p class="k">Soil</p><p class="v">None — bare seabed, seagrass and reef.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">Fully marine, and the warm current meets cooler water here.</p></div>
+            <div class="rtc-link none"><p class="k">Fire</p><p class="v">—</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Tropical coral beside cool-water sponge on one rock — the current's handiwork.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>Coral and sponge sharing a single boulder</li>
+          <li>Reef fish moving in steady pairs</li>
+          <li>Pipis and ghost crabs working the surf beach</li>
+          <li>A humpback's spout past the break, in winter</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/sea-country.webp" alt="Diagram of Sunshine Coast sea country: seagrass and sand flats leading out to a headland reef where warm- and cool-water species overlap." loading="lazy" width="1000" height="640">
+          <figcaption><b>Sea country.</b> The gradient carried underwater — seagrass and sand flats out to the reef, where a warm current lets tropical and cool-water life share the same headland.</figcaption>
+        </figure>
+      </article>
+
+      <article class="rtc-stop" id="stop-estuary" data-band="estuary" data-elev="The river mouth · 0 m" data-x="285" data-y="297" data-eco="estuary" tabindex="-1" aria-labelledby="h-estuary">
+        <p class="rtc-kicker"><span class="swx" style="background:#8b8272"></span>Stop 2 of 6 · Reef → range</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">Black mud that smells of sulphur, studded with thousands of pencil-thin spikes — and a pale army of crabs sifting the flat.</p>
+        <h2 id="h-estuary">Estuary, mangrove &amp; saltmarsh</h2>
+        <p class="rtc-what">Where the rivers meet the tide, the land gives up the argument and dissolves into mangrove, saltmarsh and seagrass — the most productive ground of the lot, and the powerhouse of the coast's fisheries.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k">Rock</p><p class="v">River silt, dropped where the current meets the tide.</p></div>
+            <div class="rtc-link"><p class="k">Soil</p><p class="v">Airless, sulphurous tidal mud — no oxygen down there.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">Salt, and flooded then drained twice every day.</p></div>
+            <div class="rtc-link none"><p class="k">Fire</p><p class="v">— too wet and salty to burn.</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Mangroves on snorkel-roots, salt-shedding leaves, soldier crabs — a nursery.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>Pencil-thin breathing roots standing out of the ooze</li>
+          <li>A faint crust of salt on the leaves</li>
+          <li>Marble-sized soldier crabs sifting the flat at low tide</li>
+          <li>The tide breathing in and out, twice a day, forever</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/estuary-zonation.webp" alt="Diagram of estuary zonation, from seagrass and mangrove through saltmarsh to the brackish fringe, banded by how often the tide covers each zone." loading="lazy" width="1000" height="640">
+          <figcaption><b>Estuary zonation.</b> Nothing is random here — each band, from mangrove to saltmarsh, is set by exactly how long the tide covers it each day.</figcaption>
+        </figure>
+      </article>
+
+      <article class="rtc-stop" id="stop-wallum" data-band="wallum" data-elev="Coastal sand · low" data-x="435" data-y="288" data-eco="wallum" tabindex="-1" aria-labelledby="h-wallum">
+        <p class="rtc-kicker"><span class="swx" style="background:#e0c98a"></span>Stop 3 of 6 · Reef → range</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">Bright, bleached, bottomless white sand — and scrub that looked like nothing, suddenly loud with spring flowers and honeyeaters.</p>
+        <h2 id="h-wallum">Wallum heath &amp; dunes</h2>
+        <p class="rtc-what">Heath and low woodland on bright, acid, hungry sand: the gradient's specialist quarter. It is the strangest lesson on the slope — the poorest ground of all, carrying the richest flora on the coast.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k">Rock</p><p class="v">Ancient quartz beach sand, and almost nothing else.</p></div>
+            <div class="rtc-link"><p class="k">Soil</p><p class="v">A bleached podzol, leached of nutrients — columns run metres deep.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">Acid and tea-dark, closer to vinegar than a pond.</p></div>
+            <div class="rtc-link"><p class="k">Fire</p><p class="v">Frequent — many plants here need it to seed or sprout.</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Nobody dominates on starved ground, so a throng of specialists crowds in.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>Bright white sand underfoot</li>
+          <li>A spring riot of hard-leaved wildflowers</li>
+          <li>Standing water the colour of strong, cold tea</li>
+          <li>Knobbly banksia cones, old ones gone grey</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/soil-podzol-chronosequence.webp" alt="Diagram of a podzol soil profile on the Cooloola dunes, showing bleached white sand over a dark buried layer, with the vegetation shrinking as the sand ages and loses nutrients." loading="lazy" width="1000" height="640">
+          <figcaption><b>The paradox in the sand.</b> As the dune sand ages it loses its last nutrients — and the forest shrinks to low heath. Sheer poverty is what breeds the crowd of species.</figcaption>
+        </figure>
+      </article>
+
+      <article class="rtc-stop" id="stop-swamp" data-band="swamp" data-elev="The floodplain · low" data-x="575" data-y="285" data-eco="swamp" tabindex="-1" aria-labelledby="h-swamp">
+        <p class="rtc-kicker"><span class="swx" style="background:#9c8b6d"></span>Stop 4 of 6 · Reef → range</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">Trees standing with their feet underwater, their pale bark peeling off in papery sheets you could lift by the handful.</p>
+        <h2 id="h-swamp">Paperbark swamp &amp; floodplain</h2>
+        <p class="rtc-what">In the floodplain's wettest hollows, broad-leaved paperbarks gather over still, tea-dark water. These wetlands look humble and are anything but: flood sponge, water filter and nursery, all at once and all on the one shift.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k">Rock</p><p class="v">River alluvium, rolled out flat across the old floodplain.</p></div>
+            <div class="rtc-link"><p class="k">Soil</p><p class="v">Dark, waterlogged mud that holds the water table high.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">Sits near the surface — the ground floods, then dries, by turns.</p></div>
+            <div class="rtc-link none"><p class="k">Fire</p><p class="v">Rare, and only at the drier margins.</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Melaleucas built for wet feet, spongy bark and all.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>Bark you can lift off the trunk in papery handfuls</li>
+          <li>Creamy bottlebrush flowers dripping nectar</li>
+          <li>Wiry sedges crowding the water's edge</li>
+          <li>Still, dark, standing water between the trunks</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/wetland-zonation.webp" alt="Diagram of freshwater wetland zonation, from open water through sedges to paperbark swamp forest, banded by how wet the ground stays." loading="lazy" width="1000" height="640">
+          <figcaption><b>Wetland zonation.</b> From open water to paperbark forest, each band marks how long the ground stays wet — the same read-the-water logic as the estuary, in fresh water.</figcaption>
+        </figure>
+      </article>
+
+      <article class="rtc-stop" id="stop-eucalypt" data-band="eucalypt" data-elev="The foothills · rising" data-x="720" data-y="232" data-eco="eucalypt" tabindex="-1" aria-labelledby="h-eucalypt">
+        <p class="rtc-kicker"><span class="swx" style="background:#7c9350"></span>Stop 5 of 6 · Reef → range</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">A dry, open slope where you can see a long way between the trunks — one tree shedding to apricot bark, another armoured near-black.</p>
+        <h2 id="h-eucalypt">Eucalypt forest &amp; woodland</h2>
+        <p class="rtc-what">Open gum forest and woodland over a grassy, sunlit floor — the country nine people in ten picture the moment you say "the Australian bush." This is fire's own country, and it depends on the burn.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k">Rock</p><p class="v">Mixed sedimentary ground on the foothills and drier slopes.</p></div>
+            <div class="rtc-link"><p class="k">Soil</p><p class="v">Thin, pale, free-draining sandy loam — modest, not poor.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">Drains away fast; the floor dries out between rains.</p></div>
+            <div class="rtc-link"><p class="k">Fire</p><p class="v">A light burn every few years keeps it open — hold it back and rainforest creeps in.</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Grey gum, ironbark, blackbutt over grass — and koalas.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>A grassy, sunlit floor you can see straight through</li>
+          <li>Smooth-shedding grey gum beside hard-armoured ironbark</li>
+          <li>A she-oak's soft, continuous sigh on the breeze</li>
+          <li>Scratch-marked koala feed trees</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/fire-boundary.webp" alt="Diagram of a fire boundary where regularly burnt open eucalypt forest meets unburnt rainforest, showing fire holding the two forests apart." loading="lazy" width="1000" height="640">
+          <figcaption><b>Fire draws the line.</b> Where the burning stops, the rainforest advances. Read a sharp forest edge and you are often reading a fire history.</figcaption>
+        </figure>
+      </article>
+
+      <article class="rtc-stop" id="stop-rainforest" data-band="rainforest" data-elev="Top of the range · basalt" data-x="905" data-y="90" data-eco="rainforest" tabindex="-1" aria-labelledby="h-rainforest">
+        <p class="rtc-kicker"><span class="swx" style="background:#3f6b3b"></span>Stop 6 of 6 · Journey's end</p>
+        <p class="rtc-cue-l">The cue</p>
+        <p class="rtc-cue">One pace off the mown grass and the light drops by half; the air turns cool and damp, and the soil underfoot is a deep chocolate red.</p>
+        <h2 id="h-rainforest">Rainforest — the range</h2>
+        <p class="rtc-what">The "big scrub" on red basalt: the richest soil and the gentlest climate on the whole slope, and fire's exact opposite — a closed, humid world that keeps fire out by refusing to dry. We began in the richest water; we end in the richest earth.</p>
+        <div class="rtc-why">
+          <p class="rtc-why-l">Why it's here — the reading</p>
+          <div class="rtc-chain">
+            <div class="rtc-link"><p class="k">Rock</p><p class="v">Basalt, laid down by a hot spot 25 million years ago.</p></div>
+            <div class="rtc-link"><p class="k">Soil</p><p class="v">Deep, rich, chocolate-red clay — the best on the gradient.</p></div>
+            <div class="rtc-link"><p class="k">Water</p><p class="v">High rainfall on cool, humid, sheltered ranges.</p></div>
+            <div class="rtc-link"><p class="k">Fire</p><p class="v">Kept out — the forest is too wet to catch.</p></div>
+            <div class="rtc-link"><p class="k">Life</p><p class="v">Figs, hoop pines, palms and ferns — few species, spent on sheer mass.</p></div>
+          </div>
+        </div>
+        <p class="rtc-look-l">Read it yourself — look for</p>
+        <ul class="rtc-look">
+          <li>The light dropping the instant you step in</li>
+          <li>Buttress roots, and a strangler fig at work</li>
+          <li>Chocolate-red soil underfoot</li>
+          <li>A whipbird's whip-crack out of the gloom</li>
+        </ul>
+        <figure class="rtc-fig">
+          <img src="assets/figures/rainforest.webp" alt="Diagram of a subtropical rainforest structure with buttressed trees, a hoop pine emerging above the canopy, palms and a dim, layered interior." loading="lazy" width="1000" height="640">
+          <figcaption><b>Rainforest.</b> Rich basalt soil and reliable rain, spent on structure — buttressed giants, emergent hoop pines, a shaded, self-watering world that shuts fire out.</figcaption>
+        </figure>
+      </article>
+
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="rtc-ctrl">
+      <button class="rtc-btn" id="prev" type="button">← Back</button>
+      <span class="grow" id="hint">The same rain falls on most of this slope. What changes is the ground.</span>
+      <button class="rtc-btn prim" id="next" type="button">Next stop →</button>
+    </div>
+  </div>
+
+  <p class="rtc-vh" aria-live="polite" id="live"></p>
+</div></section>
+
+<!-- THE PAYOFF -->
+<section class="section-tan" style="padding:3.4rem 0"><div class="wrap narrow">
+  <p class="eyebrow" style="color:var(--terra)">The pattern under everything</p>
+  <h2>One rule, at every scale</h2>
+  <p class="lead">The great slope from the range to the sea is only the grandest performance of the rule. The same read works on a single hillside — dry, open forest on the sunny slope; wet forest in the shady gully — on one ageing dune field, or on the two banks of a single creek, if one is basalt and the other sand.</p>
+  <p>Once you have it, you never quite look at a hillside the same way again. You see instead a set of answers to a single question the land is forever being asked — <em>what will grow here, given this rock, this soil, this water</em> — and you find you can very often read the answer before you have taken a step.</p>
+  <p style="margin-top:1.6rem"><a class="rule-link" href="field-guide.html">The full five-minute reading →</a></p>
+</div></section>
+
+<!-- TEST YOURSELF (the quiz, folded in) -->
+<section id="test"><div class="wrap">
+  <div class="narrow" style="margin:0 auto;text-align:center">
+    <p class="eyebrow" style="color:var(--terra)">Now test yourself</p>
+    <h2>Can you read the country?</h2>
+    <p class="lead">You've walked the gradient. Now you're dropped somewhere on the coast with nothing but what you can see — the soil, the light, the water, the plants. Which country are you standing in?</p>
+  </div>
+  <div class="game" style="margin-top:2.4rem">
+    <div class="game-card" id="card">
+      <div class="progress"><span id="prog"></span></div>
+      <div class="game-bar"><span id="counter">Question 1 of 8</span><span id="score">Score 0</span></div>
+      <p class="scene" id="scene"></p>
+      <div class="opts" id="opts"></div>
+      <div class="qwhy" id="why" aria-live="polite"><div class="verdict" id="verdict"></div><div id="whytext"></div><p id="whylink" style="margin:.7rem 0 0"></p></div>
+      <div class="game-actions" id="actions"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA PATH -->
+<section class="section-tan" style="padding:3.6rem 0"><div class="wrap">
+  <div class="narrow" style="margin:0 auto;text-align:center">
+    <p class="eyebrow" style="color:var(--terra)">Take it further</p>
+    <h2>Keep reading the country</h2>
+    <p class="lead">This explorer is the whole idea in miniature. Two ways to carry it outside — one free, one for the price of a coffee.</p>
+  </div>
+  <div class="rtc-cta">
+    <div class="card">
+      <p class="eyebrow">Free · the seasonal dispatch</p>
+      <h3>What's worth reading this month</h3>
+      <p>Join the free dispatch and get on the app waitlist: a short seasonal note on what the coast is doing right now — what's in flower, what's on the move, and where to go and read it. No spam, unsubscribe any time.</p>
+      <a class="btn btn-primary" href="join.html">Join the dispatch</a>
+    </div>
+    <div class="card">
+      <p class="eyebrow">The book · from 15 July</p>
+      <h3>Same Sky, Different Ground</h3>
+      <p>The whole gradient, in full — the reef, the range and every world between, told as warm, accurate natural history. <em>Same Sky, Different Ground</em> launches 15 July 2026 at A$9.99.</p>
+      <a class="btn btn-ghost" href="the-book.html">About the book</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="site-foot"><div class="wrap">
+  <div class="foot-grid">
+    <div><strong style="font-family:var(--serif);font-size:1.1rem;color:#fbf3dd">Same Sky, Different Ground</strong><br>Reading the ecology of the Sunshine Coast, from the reef to the range.</div>
+    <nav class="foot-links" aria-label="Site map">
+      <a href="index.html">Home</a><a href="field-guide.html">Field guide</a>
+      <a href="explore-map.html">Map</a><a href="ecosystems.html">Ecosystems</a>
+      <a href="forces.html">Forces</a><a href="wonders.html">Wonders</a>
+      <a href="read-the-country.html">Read the country</a><a href="app.html">The app</a><a href="in-flower.html">In flower</a><a href="this-month.html">This month</a><a href="join.html">Join</a>
+      <a href="prints.html">Prints</a><a href="the-book.html">The book</a><a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="foot-note foot-cite">An open companion to the book <cite>Same Sky, Different Ground</cite> by Daniel Addington. If you quote or build on this, please cite the book and link back to this site. Site text and figures are licensed <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</p>
+    <p class="foot-note">The Sunshine Coast is Kabi Kabi (Gubbi Gubbi) Country. We pay our respects to Kabi Kabi Elders past and present.</p>
+</div></footer>
+
+<script>
+/* ══════════════ Gradient explorer ══════════════ */
+(function(){
+  var stopsEl=document.getElementById('stops');
+  if(!stopsEl) return;
+  var stops=Array.prototype.slice.call(stopsEl.querySelectorAll('.rtc-stop'));
+  var spine=document.getElementById('spine'),
+      marker=document.getElementById('marker'),
+      elev=document.getElementById('elev'),
+      dotsEl=document.getElementById('dots'),
+      countEl=document.getElementById('count'),
+      prevB=document.getElementById('prev'),
+      nextB=document.getElementById('next'),
+      live=document.getElementById('live'),
+      N=stops.length,
+      i=0;
+
+  // build dot rail from the stops themselves
+  var DOTLABEL=['Reef','Estuary','Wallum','Swamp','Eucalypt','Rainforest'];
+  stops.forEach(function(s,idx){
+    var b=document.createElement('button');
+    b.type='button';
+    b.setAttribute('role','tab');
+    b.textContent=DOTLABEL[idx]||('Stop '+(idx+1));
+    b.setAttribute('aria-label','Stop '+(idx+1)+' of '+N+': '+s.querySelector('h2').textContent);
+    b.addEventListener('click',function(){go(idx,true);});
+    dotsEl.appendChild(b);
+  });
+  var dots=Array.prototype.slice.call(dotsEl.children);
+
+  function bandEls(){return spine.querySelectorAll('.band, .lbl');}
+
+  function go(n,focus){
+    n=Math.max(0,Math.min(N-1,n));
+    i=n;
+    var s=stops[i], band=s.getAttribute('data-band');
+    // stops
+    stops.forEach(function(x){x.classList.remove('active');});
+    s.classList.add('active');
+    // spine highlight
+    bandEls().forEach(function(el){
+      var b=el.getAttribute('id')?el.id.replace('rtc-band-',''):el.getAttribute('data-b');
+      el.classList.toggle('on', b===band);
+    });
+    // marker glide
+    var mx=+s.getAttribute('data-x'), my=+s.getAttribute('data-y');
+    marker.setAttribute('transform','translate('+mx+','+my+')');
+    elev.textContent=s.getAttribute('data-elev').replace(/&amp;/g,'&');
+    // dots
+    dots.forEach(function(d,idx){d.classList.toggle('on',idx===i);d.setAttribute('aria-selected',idx===i?'true':'false');});
+    // controls
+    countEl.textContent='Stop '+(i+1)+' of '+N;
+    prevB.disabled=(i===0);
+    nextB.textContent=(i<N-1)?'Next stop →':'Test yourself →';
+    // announce + focus
+    live.textContent='Stop '+(i+1)+' of '+N+': '+s.querySelector('h2').textContent;
+    if(focus){ s.focus({preventScroll:true}); }
+    // hash (no scroll jump)
+    if(history.replaceState) history.replaceState(null,'','#'+s.getAttribute('data-eco'));
+  }
+
+  prevB.addEventListener('click',function(){go(i-1,true);});
+  nextB.addEventListener('click',function(){
+    if(i<N-1){go(i+1,true);}
+    else{
+      var t=document.getElementById('test');
+      if(t){
+        t.scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});
+        var h=t.querySelector('h2');
+        if(h){h.setAttribute('tabindex','-1'); h.focus({preventScroll:true});}
+      }
+    }
+  });
+
+  // keyboard: arrows move between stops when focus is inside the explorer
+  document.getElementById('explorer').addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();go(i+1,true);}
+    else if(e.key==='ArrowLeft'){e.preventDefault();go(i-1,true);}
+    else if(e.key==='Home'){e.preventDefault();go(0,true);}
+    else if(e.key==='End'){e.preventDefault();go(N-1,true);}
+  });
+
+  // click a band in the SVG to jump (mouse enhancement)
+  stops.forEach(function(s,idx){
+    var g=document.getElementById('rtc-band-'+s.getAttribute('data-band'));
+    if(g){g.style.cursor='pointer';g.addEventListener('click',function(){go(idx,true);});}
+  });
+
+  // touch swipe on the stops area
+  var tx=0,ty=0;
+  stopsEl.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+  stopsEl.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6){ go(i+(dx<0?1:-1),true); }
+  },{passive:true});
+
+  // deep link (#wallum etc.)
+  var hash=location.hash.replace('#','');
+  var start=0;
+  stops.forEach(function(s,idx){ if(s.getAttribute('data-eco')===hash) start=idx; });
+  go(start,false);
+})();
+
+/* ══════════════ Test-yourself quiz ══════════════ */
+var OPTIONS=["Estuary/mangroves","Wallum/dunes","Paperbark swamp","Eucalypt forest","Rainforest","Sea country"];
+var ANCHOR={"Estuary/mangroves":"estuary","Wallum/dunes":"wallum","Paperbark swamp":"swamp",
+            "Eucalypt forest":"eucalypt","Rainforest":"rainforest","Sea country":"sea"};
+var Q=[
+ {s:"You step off the mown grass and, in a single pace, the light drops by half. The air turns cool, damp and still, water ticks from leaf to leaf, and the soil underfoot is a deep chocolate red. Around you huge grey trunks flare out at the base into thin fins of wood, and a whip-crack call snaps out of the gloom.",a:"Rainforest",w:"A dim, closed, multi-layered forest with buttressed giants on deep red basalt soil is the wettest, richest, most fire-sheltered end of the gradient; fire almost never gets in, so it stays dark and damp."},
+ {s:"The tide is out, and you're standing on black mud that smells faintly of sulphur. The ground between the trunks is studded, as far as you can see, with thousands of upright pencil-thin spikes poking out of the ooze. A pale-blue army of marble-sized crabs sifts the flat, and the leaves overhead wear a faint crust of salt.",a:"Estuary/mangroves",w:"Snorkel roots standing out of airless tidal mud, salt-crusted leaves and soldier crabs all say ground that is flooded and drained twice a day and flushed with salt — the mangrove flat."},
+ {s:"You're on a sandy track through low, hard-leaved, grey-green scrub barely higher than your head, walking on bright, bleached, bottomless white sand. It's spring, and the scrub that looked like nothing is suddenly loud with flowers — knobbly banksia cones, red-gold bells, ground orchids — and busy honeyeaters. In a hollow nearby the standing water is the colour of strong, cold tea.",a:"Wallum/dunes",w:"Bleached white sand, a spring riot of hard-leaved wildflowers, water stained like cold tea: that is the nutrient-poor, acid sand country, where sheer poverty breeds the richest flora on the coast."},
+ {s:"The trees here stand with their feet underwater, on flat, sodden ground. Their bark is pale, soft and spongy, peeling off the trunk in papery sheets you could lift by the handful. The water is still and tea-dark, wiry sedges crowd the margins, and where the canopy has flowered it drips creamy bottlebrush spikes.",a:"Paperbark swamp",w:"Pale, spongy, papery bark on trees that live with permanently wet feet, standing in still dark water among sedges, is the melaleuca swamp — a tree built for ground that floods and dries by turns."},
+ {s:"You're on a dry, open slope where the soil is thin and pale and you can see a long way between the trunks. Grass and scattered flowering shrubs cover the sunlit floor. One tree has shed its skin in strips to bare apricot-orange bark; another wears bark furrowed hard and nearly black. On the breeze a fine, weeping she-oak keeps up a soft, continuous sigh.",a:"Eucalypt forest",w:"An open, grassy, sunlit floor under gum trunks — smooth-shedding grey gum, hard-armoured ironbark — with she-oaks sighing is fire-kept dry sclerophyll gum country."},
+ {s:"You duck under the surface off a rocky headland and settle on a boulder where hard coral is growing a fin's length from leathery brown seaweed and sponge. Bright fish moving in pairs mix with stouter, sober fish of cooler water. Flat in a gutter, a frilled, camouflaged shape resolves, unnervingly, into a bearded carpet shark.",a:"Sea country",w:"Tropical coral and cool-water sponges sharing a single rock is the warm current's handiwork on a headland reef — the land's gradient carried on underwater."},
+ {s:"Bare, shifting sand behind the beach, blasted by salt spray and glare, with almost no soil to speak of. A sprawling grass throws long runners across the open ground, pinning it down; among it grow fat-leaved plants with improbable magenta flowers, and a vine flinging purple-flowered ropes metres across the slope.",a:"Wallum/dunes",w:"Spinifex runners, pigface and goat's-foot binding raw, salt-blasted sand are the pioneer crew of the foredune — the first plants to get a grip on bare sand."},
+ {s:"You're on an open surf beach, all wind and scoured sand, and it looks like the deadest ground on the coast — until you dig at the edge of the swash and turn up a small, glossy, wedge-shaped clam, and after dark pale, stalk-eyed crabs sprint the strandline. Out past the break, in winter, a great dark back rolls and a spout hangs a moment above the water.",a:"Sea country",w:"Pipis and ghost crabs working the surf zone, humpbacks out past the break: this is the sea read as living country, and even a bare surf beach is busier than it looks."}
+];
+for(var _s=Q.length-1;_s>0;_s--){var _j=Math.floor(Math.random()*(_s+1)),_t=Q[_s];Q[_s]=Q[_j];Q[_j]=_t;}
+var qi=0,score=0,answered=false;
+var scene=document.getElementById('scene'),opts=document.getElementById('opts'),why=document.getElementById('why'),
+    verdict=document.getElementById('verdict'),whytext=document.getElementById('whytext'),actions=document.getElementById('actions'),
+    counter=document.getElementById('counter'),scoreEl=document.getElementById('score'),prog=document.getElementById('prog');
+function qrender(){
+  answered=false; var q=Q[qi];
+  counter.textContent='Question '+(qi+1)+' of '+Q.length;
+  scoreEl.textContent='Score '+score;
+  prog.style.width=(qi/Q.length*100)+'%';
+  scene.textContent=q.s; why.className='qwhy'; actions.innerHTML='';
+  opts.innerHTML='';
+  OPTIONS.forEach(function(o){
+    var b=document.createElement('button'); b.type='button'; b.textContent=o;
+    b.onclick=function(){pick(o,b,q);}; opts.appendChild(b);
+  });
+}
+function pick(o,btn,q){
+  if(answered) return; answered=true;
+  var correct=(o===q.a);
+  if(correct) score++;
+  document.querySelectorAll('#opts button').forEach(function(b){
+    b.disabled=true;
+    if(b.textContent===q.a) b.classList.add('correct');
+    else if(b===btn) b.classList.add('wrong');
+  });
+  verdict.textContent=correct?'Correct — '+q.a:'Not quite — it’s '+q.a;
+  whytext.textContent=q.w;
+  document.getElementById('whylink').innerHTML='<a href="ecosystems.html#'+ANCHOR[q.a]+'">Read this country in full →</a>';
+  why.className='qwhy show'; scoreEl.textContent='Score '+score;
+  var b=document.createElement('button'); b.className='btn btn-primary'; b.type='button';
+  b.textContent=(qi<Q.length-1)?'Next place →':'See your score';
+  b.onclick=function(){ qi++; (qi<Q.length)?qrender():finish(); }; actions.appendChild(b);
+}
+function finish(){
+  prog.style.width='100%';
+  document.getElementById('card').innerHTML='<div class="result"><p class="eyebrow" style="text-align:center">Your reading</p>'+
+   '<p class="big">'+score+' / '+Q.length+'</p>'+
+   '<p class="lead">'+verdictText()+'</p>'+
+   '<p style="margin:1.4rem 0"><button class="btn btn-ghost" type="button" onclick="location.reload()">Play again</button> '+
+   '<button class="btn btn-ghost" type="button" id="shareBtn">Share your score</button> '+
+   '<a class="btn btn-primary" href="join.html">Join the dispatch</a></p></div>';
+  document.getElementById('shareBtn').onclick=function(){
+    var msg='I scored '+score+'/'+Q.length+' reading the Sunshine Coast in "Read the Country" — can you read the country you live in?';
+    if(navigator.share){ navigator.share({title:'Read the Country',text:msg,url:location.href}).catch(function(){}); }
+    else if(navigator.clipboard){ navigator.clipboard.writeText(msg+' '+location.href); this.textContent='Copied!'; }
+  };
+}
+function verdictText(){
+  if(score>=7) return "You can read this country. The field guide will take you outside to prove it.";
+  if(score>=4) return "A good eye — you’re reading the big signs already.";
+  return "Every one of these is laid out in the gradient explorer above and in the field guide. Learn the cues and you’ll start spotting them everywhere.";
+}
+qrender();
+</script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
